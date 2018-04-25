@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: sentinel
+    role: service
+  name: parking-redis-sentinel-service
+  namespace: ezia-parking-mvp-dev
+spec:
+  type: NodePort
+  ports:
+    - port: 26379
+      targetPort: 26379
+  selector:
+    redis-sentinel: "true"

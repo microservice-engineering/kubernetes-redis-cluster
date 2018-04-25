@@ -1,0 +1,105 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-master-pv-0
+  namespace: mobility-asia
+  labels: 
+    storage-pv: redis-master-pv-0
+spec:
+  capacity:
+    storage: 1Gi  
+  accessModes:
+  - ReadWriteMany
+  nfs: 
+    path: /var/nfs/redis/redis-master-pv0
+    server: 9.110.246.132
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: master-storage-redis-master-0
+  namespace: mobility-asia
+spec:
+  accessModes:
+  - ReadWriteMany
+  selector: 
+    matchLabels:
+      storage-pv: redis-master-pv-0
+  resources:
+     requests:
+       storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-master-pv-1
+  namespace: mobility-asia
+  labels: 
+    storage-pv: redis-master-pv-1
+spec:
+  capacity:
+    storage: 1Gi  
+  accessModes:
+  - ReadWriteMany
+  nfs: 
+    path: /var/nfs/redis/redis-master-pv1
+    server: 9.110.246.132
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: master-storage-redis-master-1
+  namespace: mobility-asia
+spec:
+  accessModes:
+  - ReadWriteMany
+  selector: 
+    matchLabels:
+      storage-pv: redis-master-pv-1
+  resources:
+     requests:
+       storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-master-pv-2
+  namespace: mobility-asia
+  labels: 
+    storage-pv: redis-master-pv-2
+spec:
+  capacity:
+    storage: 1Gi  
+  accessModes:
+  - ReadWriteMany
+  nfs: 
+    path: /var/nfs/redis/redis-master-pv2
+    server: 9.110.246.132
+  persistentVolumeReclaimPolicy: Retain
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: master-storage-redis-master-2
+  namespace: mobility-asia
+spec:
+  accessModes:
+  - ReadWriteMany
+  selector: 
+    matchLabels:
+      storage-pv: redis-master-pv-2
+  resources:
+     requests:
+       storage: 1Gi
